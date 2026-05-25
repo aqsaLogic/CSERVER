@@ -23,11 +23,11 @@ const io = new Server(server, {
 // ioredis auto-reconnects; no need to manually handle connection events
 const redis = new Redis(process.env.REDIS_URL || 'redis://localhost:6379');
 
-redis.on('connect', () => console.log('✅ Redis connected'));
+redis.on('connect', () => console.log('Redis connected'));
 redis.on('error',   (err) => console.error('Redis error:', err.message));
 
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log('DB connected'))
   .catch((err) => console.error('MongoDB error:', err.message));
 
@@ -38,7 +38,7 @@ app.get('/', (_req, res) => {
 
 // ── Socket.io events 
 io.on('connection', (socket) => {
-  console.log(`⚡ User connected: ${socket.id}`);
+  console.log(`User connected: ${socket.id}`);
 
   // ── JOIN: client joins a named room ──────────────────────────
   socket.on('join', async (roomId) => {
