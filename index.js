@@ -151,7 +151,7 @@ io.on('connection', (socket) => {
   });
 });
 
-cron.schedule('0 */2 * * *', async () => {
+cron.schedule('*/1 * * * *', async () => {
   console.log('Cron: flushing Redis cache → MongoDB...');
 
   try {
