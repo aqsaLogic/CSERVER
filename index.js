@@ -5,7 +5,7 @@ import cron  from 'node-cron';
 import cors  from 'cors';
 import mongoose from 'mongoose';
 import Redis from 'ioredis';     
-import Room from './models/msgs.jd';
+import Room from './models/msgs.js';
 import express  from 'express';
 
 const app = express();
@@ -24,7 +24,7 @@ const io = new Server(server, {
 const redis = new Redis(process.env.REDIS_URL || 'redis://localhost:6379');
 
 redis.on('connect', () => console.log('✅ Redis connected'));
-redis.on('error',   (err) => console.error('❌ Redis error:', err.message));
+redis.on('error',   (err) => console.error('Redis error:', err.message));
 
 mongoose
   .connect(process.env.MONGO_URI)
@@ -33,7 +33,7 @@ mongoose
 
 // ── Health check route 
 app.get('/', (_req, res) => {
-  res.send('<h1>Relay Chat Server — Running ✅</h1>');
+  res.send('<h1>Relay Chat Server — Running </h1>');
 });
 
 // ── Socket.io events 
