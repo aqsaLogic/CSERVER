@@ -5,7 +5,7 @@ import cron  from 'node-cron';
 import cors  from 'cors';
 import mongoose from 'mongoose';
 import Redis from 'ioredis';     
-import Room from './models/Room.js';
+import Room from './models/msgs.jd';
 import express  from 'express';
 
 const app = express();
